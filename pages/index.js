@@ -143,7 +143,7 @@ export default function Home() {
     });
   }
 
-  React.useEffect(async () => {
+  React.useEffect(() => {
     navigator.geolocation.getCurrentPosition(async (position) => {
       await fetch(
         `https://api.openweathermap.org/data/2.5/weather?units=${STANDART_UNITS}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}`
@@ -195,7 +195,7 @@ export default function Home() {
           type="submit"
           onClick={searchWeather}
         >
-          <i class="btn-search-icon bi bi-search"></i>
+          <i className="btn-search-icon bi bi-search"></i>
         </button>
         <input
           className="header__input"
