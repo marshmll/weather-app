@@ -214,7 +214,7 @@ export default function Home() {
           <div className="weather-data">
             <div className="weather-temps-wrapper">
               <h2 className="weather-temperature">
-                {weather.main ? `${weather.main.temp.toFixed(1)}°C` : ":("}
+                {weather.main ? `${weather.main.temp.toFixed(1)}°C` : ""}
               </h2>
               <p>
                 {weather.main
