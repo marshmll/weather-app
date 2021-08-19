@@ -52,7 +52,7 @@ const Styles = createGlobalStyle`
   .weather-wrapper {
     background-color: #ffffff50;
     padding: 1rem .8rem;
-    width: 500px;
+    max-width: 500px;
     border-radius: 5px;
     box-shadow: 0px 0px 15px #00000050;
   }
