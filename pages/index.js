@@ -91,11 +91,6 @@ const Styles = createGlobalStyle`
     display: inline-block;
   }
 
-  .weather-image--partly-cloudy {
-    background: url("https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png");
-    display: inline-block;
-  }
-
   .Clouds {
     background: url("https://ssl.gstatic.com/onebox/weather/64/cloudy.png");
     display: inline-block;
@@ -113,7 +108,7 @@ const Styles = createGlobalStyle`
 
 export default function Home() {
   const API_KEY = "588d93379fb2561d21907bfeb9eeb8b7";
-  const STANDART_UNITS = 'metric'
+  const STANDART_UNITS = "metric";
 
   const [weather, setWeather] = React.useState({});
   const [currentWeatherIllustration, setCurrentWeatherIllustration] =
@@ -146,7 +141,9 @@ export default function Home() {
   React.useEffect(() => {
     navigator.geolocation.getCurrentPosition(async (position) => {
       await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?units=${STANDART_UNITS}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?units=${STANDART_UNITS}&lat=${position.coords.latitude.toFixed(
+          1
+        )}&lon=${position.coords.longitude.toFixed(1)}&appid=${API_KEY}`
       ).then(async (response) => {
         const convertedResponse = await response.json();
         setWeather(convertedResponse);
@@ -190,18 +187,20 @@ export default function Home() {
       </Head>
       <Styles />
       <header className="header">
-        <button
-          className="header__search-btn"
-          type="submit"
-          onClick={searchWeather}
-        >
-          <i className="btn-search-icon bi bi-search"></i>
-        </button>
-        <input
-          className="header__input"
-          placeholder="Pesquise sua cidade"
-          id="cityInput"
-        ></input>
+        <form>
+          <button
+            className="header__search-btn"
+            type="submit"
+            onClick={searchWeather}
+          >
+            <i className="btn-search-icon bi bi-search"></i>
+          </button>
+          <input
+            className="header__input"
+            placeholder="Pesquise sua cidade"
+            id="cityInput"
+          ></input>
+        </form>
       </header>
       <div className="content">
         <section className="weather-wrapper">
