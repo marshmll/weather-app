@@ -20,6 +20,7 @@ export default function Home() {
     if (localStorage.getItem('FAVORITE_CITY')) {
       setFavoriteButtonStatus(!favoriteButtonStatus);
       getWeatherFromCity(localStorage.getItem('FAVORITE_CITY'))
+      updateLocalTime();
     } else {
       navigator.geolocation.getCurrentPosition(async position => {
 
@@ -85,10 +86,12 @@ export default function Home() {
   return (
     <>
       <HeaderWrapper>
-        <button onClick={searchWeather}>
-          <i className="bi bi-search"></i>
-        </button>
-        <input id="cityInput" placeholder="Digite a cidade..."></input>
+        <form>
+          <button onClick={searchWeather}>
+            <i className="bi bi-search"></i>
+          </button>
+          <input id="cityInput" placeholder="Digite a cidade..."></input>
+        </form>
       </HeaderWrapper>
       <ContentWrapper>
         <LeftColumnWrapper>
