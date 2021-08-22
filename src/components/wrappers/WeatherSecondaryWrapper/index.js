@@ -14,9 +14,8 @@ const WeatherSecondaryWrapper = styled.section`
     display: inline-block;
   }
 
-  span section {
+  span svg {
     transition: cubic-bezier(0.215, 0.610, 0.355, 1) 1s;
-    margin-left: .8rem;
   }
 `;
 

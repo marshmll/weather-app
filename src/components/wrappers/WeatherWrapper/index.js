@@ -1,6 +1,16 @@
 import styled from "styled-components";
 
 const WeatherWrapper = styled.section`
+  position: relative;
+
+  button {
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    left: 100%;
+    transform: translate(-50%, -50%);
+  }
+
   h1 {
     font-weight: 400;
   }
