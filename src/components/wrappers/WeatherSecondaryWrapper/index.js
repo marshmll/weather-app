@@ -5,6 +5,8 @@ const WeatherSecondaryWrapper = styled.section`
     border-top: 1px solid #e1e1e1;
     border-bottom: 1px solid #e1e1e1;
     padding: .5rem 0;
+    display: flex;
+    align-items: center;
     span {
       margin-left: 1rem;
     }
@@ -14,7 +16,7 @@ const WeatherSecondaryWrapper = styled.section`
     display: inline-block;
   }
 
-  span svg {
+  svg {
     transition: cubic-bezier(0.215, 0.610, 0.355, 1) 1s;
   }
 `;
