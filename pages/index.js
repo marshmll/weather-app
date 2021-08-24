@@ -9,7 +9,6 @@ import WeatherSecondaryWrapper from '../src/components/wrappers/WeatherSecondary
 
 export default function Home() {
 
-  const API_KEY = '588d93379fb2561d21907bfeb9eeb8b7'
   const STANDART_UNITS = 'metric'
   const [cityWeather, setCityWeather] = React.useState('');
   const [currentTime, setCurrentTime] = React.useState('');
@@ -24,7 +23,7 @@ export default function Home() {
     } else {
       navigator.geolocation.getCurrentPosition(async position => {
 
-        await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude.toFixed(1)}&lon=${position.coords.longitude.toFixed(1)}&units=${STANDART_UNITS}&appid=${API_KEY}&lang=pt_br`)
+        await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude.toFixed(1)}&lon=${position.coords.longitude.toFixed(1)}&units=${STANDART_UNITS}&appid=${process.env.API_KEY}&lang=pt_br`)
           .then(async (res) => {
 
             const response = await res.json();
@@ -40,12 +39,11 @@ export default function Home() {
   }, [])
 
   async function getWeatherFromCity(city) {
-    await fetch(`https://api.openweathermap.org/data/2.5/weather?units=${STANDART_UNITS}&q=${city}&appid=${API_KEY}&lang=pt_br`)
+    await fetch(`https://api.openweathermap.org/data/2.5/weather?units=${STANDART_UNITS}&q=${city}&appid=${process.env.API_KEY}&lang=pt_br`)
       .then(async (res) => {
 
         const cityWeather = await res.json()
         setCityWeather(cityWeather);
-        console.log(cityWeather);
         if (localStorage.getItem('FAVORITE_CITY') == cityWeather.name) setFavoriteButtonStatus(true);
         else setFavoriteButtonStatus(false)
 
